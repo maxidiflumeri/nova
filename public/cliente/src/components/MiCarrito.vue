@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="col-lg-2">
-          <h5>${{detalleCarrito.producto.PRECIO * detalleCarrito.cantidad}}.-</h5>
+          <h5>$ {{detalleCarrito.producto.PRECIO * detalleCarrito.cantidad | formatoMoneda}}</h5>
         </div>
         <div class="col-lg-1">
           <div class="row d-flex align-items-center">
@@ -63,7 +63,7 @@
         </button>
       </div>
       <div class="col-lg-6 text-right text-white">
-        <h3>Total: ${{total}}.-</h3>
+        <h3>Total: $ {{total | formatoMoneda }}</h3>
       </div>
     </div>
     <div class="d-flex justify-content-end text-white"></div>

@@ -69,7 +69,7 @@
         </div>  
         <div class="row mt-3">
           <div class="col-lg-12 d-flex justify-content-center">
-              <h1 class="text-white">$ {{producto.PRECIO}}</h1>
+              <h1 class="text-white">$ {{producto.PRECIO | formatoMoneda }}</h1>
           </div>        
         </div>
         <div class="row mt-3 d-flex justify-content-center">

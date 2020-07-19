@@ -24,15 +24,6 @@
           <div class="md-toolbar-section-start">
             <h1 class="md-title">Pedidos</h1>
           </div>
-
-          <md-field md-clearable class="md-toolbar-section-end">
-            <md-input
-              class="text-primary"
-              placeholder="Buscar estado..."
-              v-model="busqueda"
-              @input="buscarEnTabla"
-            />
-          </md-field>
         </md-table-toolbar>
 
         <md-table-empty-state md-label="No hay pedidos"></md-table-empty-state>
@@ -40,9 +31,12 @@
         <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="single">
           <md-table-cell md-label="Id Pedido" md-sort-by="ID_PEDIDO">{{ item.ID_PEDIDO }}</md-table-cell>
           <md-table-cell md-label="Id Usuario" md-sort-by="ID_USUARIO">{{ item.ID_USUARIO }}</md-table-cell>
-          <md-table-cell md-label="Fecha" md-sort-by="FECHA">{{ item.FECHA | formatearFecha}}</md-table-cell>
-          <md-table-cell md-label="Importe" md-sort-by="IMPORTE_TOTAL">{{ item.IMPORTE_TOTAL }}</md-table-cell>
-          <md-table-cell md-label="Id Estado" md-sort-by="ID_ESTADO">{{ item.ID_ESTADO }}</md-table-cell>
+          <md-table-cell md-label="Fecha" md-sort-by="FECHA">{{ item.FECHA | formatearFecha }}</md-table-cell>
+          <md-table-cell md-label="Importe" md-sort-by="IMPORTE_TOTAL">$ {{ item.IMPORTE_TOTAL | formatoMoneda }}</md-table-cell>
+          <md-table-cell
+            md-label="Estado"
+            md-sort-by="ID_ESTADO"
+          >{{ buscarNombreEstado(item.ID_ESTADO) }}</md-table-cell>
         </md-table-row>
       </md-table>
       <!-- -------------------------------------------------------------------------------------------------------------------- -->
@@ -116,12 +110,7 @@
                   <div class="col-lg-4">
                     <md-field>
                       <label>Fecha del Pedido</label>
-                      <md-input
-                        name="fecha"
-                        id="fecha"
-                        v-model="seleccionadoTemp.fecha"
-                        disabled
-                      />
+                      <md-input name="fecha" id="fecha" v-model="seleccionadoTemp.fecha" disabled />
                     </md-field>
                   </div>
                   <div class="col-lg-4">
@@ -136,7 +125,7 @@
                     </md-field>
                   </div>
                 </div>
-                <hr>
+                <hr />
                 <h4>Detalle de productos</h4>
                 <div class="row" v-for="(producto, index) in this.detallePedido" :key="index">
                   <div class="col-lg-3">
@@ -153,12 +142,7 @@
                   <div class="col-lg-3">
                     <md-field>
                       <label>Cantidad</label>
-                      <md-input
-                        name="CANTIDAD"
-                        id="CANTIDAD"
-                        v-model="producto.CANTIDAD"
-                        disabled
-                      />
+                      <md-input name="CANTIDAD" id="CANTIDAD" v-model="producto.CANTIDAD" disabled />
                     </md-field>
                   </div>
                   <div class="col-lg-3">
@@ -167,8 +151,8 @@
                       <md-input
                         name="IMPORTE_UNITARIO"
                         id="IMPORTE_UNITARIO"
-                        v-model="producto.IMPORTE_UNITARIO"  
-                        disabled                
+                        v-model="producto.IMPORTE_UNITARIO"
+                        disabled
                       />
                     </md-field>
                   </div>
@@ -178,8 +162,8 @@
                       <md-input
                         name="IMPORTE_UNITARIO"
                         id="IMPORTE_UNITARIO"
-                        :value  = "producto.IMPORTE_UNITARIO * producto.CANTIDAD"  
-                        disabled                      
+                        :value="producto.IMPORTE_UNITARIO * producto.CANTIDAD"
+                        disabled
                       />
                     </md-field>
                   </div>
@@ -216,22 +200,11 @@
 <script lang="js">
   import url from '../urls.js'
 
-  const toLower = text => {
-    return text.toString().toLowerCase()
-  }
-
-  const buscarPorNombre = (lista, valor) => {
-    if (valor) {
-      return lista.filter(item => toLower(item.DESCRIPCION).includes(toLower(valor)))
-    }
-    return lista
-  }
   export default  {
     name: 'src-components-pedidos',
     props: [],
     mounted () {
       this.getPedidos()
-      
     },
     data () {
       return {
@@ -262,6 +235,7 @@
             })
           this.pedidos = data.data
           this.buscados = data.data
+          await this.$store.dispatch('actualizarEstados')
           this.cargandoPedidos = false
         }catch(error){
             console.log("Error GET: " + error)
@@ -349,13 +323,15 @@
         this.estaEditando = false
         this.claseCard = 'md-layout-item md-size-100 md-small-size-100' 
       },
-
-      // buscador de elemento en la tabla
-      buscarEnTabla () {
-        this.buscados = buscarPorNombre(this.$store.state.listaEstados, this.busqueda)
-      },
+      buscarNombreEstado(id){ 
+        const resultado = this.listaEstados.find( elemento => elemento.ID_ESTADO == id );        
+        return resultado.DESCRIPCION
+      }
     },
     computed: {
+      listaEstados(){
+        return this.$store.state.listaEstados
+      }
 
     }
 }
@@ -364,8 +340,7 @@
 </script>
 
 <style scoped lang="css">
-.color{
-  background: grey;;
- 
+.color {
+  background: grey;
 }
 </style>

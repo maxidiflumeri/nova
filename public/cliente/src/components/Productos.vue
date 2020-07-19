@@ -70,7 +70,7 @@
                 />
               </div>
               <div class="card-body ">
-                <h5 class="card-title ">${{producto.PRECIO}}</h5>
+                <h5 class="card-title ">$ {{producto.PRECIO | formatoMoneda}}</h5>
                 <div v-if="producto.STOCK > 0">
                   <span class="text-success">En Stock</span>
                 </div>

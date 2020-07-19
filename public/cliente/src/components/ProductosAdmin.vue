@@ -45,7 +45,7 @@
               md-label="Descripcion"
               md-sort-by="DESCRIPCION"
             >{{ item.DESCRIPCION | primeraMayuscula}}</md-table-cell>
-            <md-table-cell md-label="Precio" md-sort-by="PRECIO">{{ item.PRECIO }}</md-table-cell>
+            <md-table-cell md-label="Precio" md-sort-by="PRECIO">$ {{ item.PRECIO | formatoMoneda }}</md-table-cell>
             <md-table-cell md-label="Stock" md-sort-by="STOCK">{{ item.STOCK }}</md-table-cell>
             <md-table-cell
               md-label="Fecha de ingreso"
@@ -78,32 +78,28 @@
               <div class="container">
                 <div class="row">
                   <div class="col-lg-4">
-                    <md-autocomplete
-                      v-model="tipo"
-                      :md-options="tipos"
-                      @md-changed="getTipos"
-                      @md-opened="getTipos"
-                    >
-                      <label>Tipo</label>
-                      <template
-                        slot="md-autocomplete-item"
-                        slot-scope="{ item }"
-                      >{{ item.DESCRIPCION }}</template>
-                    </md-autocomplete>
+                    <div class="md-layout-item">
+                      <md-field>
+                        <label>Tipo</label>
+                        <md-select v-model="tipo">
+                          <div v-for="(tipo, index) in listaTipos" :key="index">
+                            <md-option :value="tipo.ID_TIPO">{{ tipo.DESCRIPCION }}</md-option>
+                          </div>
+                        </md-select>
+                      </md-field>
+                    </div>
                   </div>
                   <div class="col-lg-4">
-                    <md-autocomplete
-                      v-model="marca"
-                      :md-options="marcas"
-                      @md-changed="getMarcas"
-                      @md-opened="getMarcas"
-                    >
-                      <label>Marca</label>
-                      <template
-                        slot="md-autocomplete-item"
-                        slot-scope="{ item }"
-                      >{{ item.DESCRIPCION }}</template>
-                    </md-autocomplete>
+                    <div class="md-layout-item">
+                      <md-field>
+                        <label>Marca</label>
+                        <md-select v-model="marca">
+                          <div v-for="(marca, index) in listaMarcas" :key="index">
+                            <md-option :value="marca.ID_MARCA">{{ marca.DESCRIPCION }}</md-option>
+                          </div>
+                        </md-select>
+                      </md-field>
+                    </div>
                   </div>
                   <div class="col-lg-4">
                     <md-field>
@@ -416,13 +412,11 @@
         hayMensaje: false,
         mensaje: '',
         cargando: true,
-        tipo: {
-          DESCRIPCION : ''
-        },
+        tipo: null,
         tipos: [],
         marca: null,
         marcas: [],
-        fechaProducto: ''       
+        fechaProducto: ''
 
       }
     },
@@ -550,8 +544,8 @@
 
        // metodo que agrega el elemento
       confirmarAgregar(){
-        this.formData.ID_MARCA = this.marca.ID_MARCA  
-        this.formData.ID_TIPO = this.tipo.ID_TIPO
+        this.formData.ID_MARCA = this.marca
+        this.formData.ID_TIPO = this.tipo
         this.axios.post(url.url + url.urlProductos , this.formData, {
           headers:
             {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
@@ -596,35 +590,14 @@
           console.log('ERROR GET HTTP', error)
         })      
       },
-
-      getTipos(valorBuscado){
-        this.tipos = new Promise(resolve =>{
-          window.setTimeout(() => {
-            if(!valorBuscado){
-              resolve(this.$store.state.listaTipos)              
-            }else{
-              const valor = valorBuscado.toLowerCase()
-              resolve(this.$store.state.listaTipos.filter(({DESCRIPCION}) => DESCRIPCION.toLowerCase().includes(valor)))
-            }
-          },500)
-        })
-      },
-      
-      getMarcas(valorBuscado){
-        this.marcas = new Promise(resolve =>{
-          window.setTimeout(() => {
-            if(!valorBuscado){
-              resolve(this.$store.state.listaMarcas)              
-            }else{
-              const valor = valorBuscado.toLowerCase()
-              resolve(this.$store.state.listaMarcas.filter(({DESCRIPCION}) => DESCRIPCION.toLowerCase().includes(valor)))
-            }
-          },500)
-        })
-      }
     },
     computed: {
-
+      listaTipos(){
+        return this.$store.state.listaTipos
+      },
+      listaMarcas(){
+        return this.$store.state.listaMarcas
+      }
     }
 }
 

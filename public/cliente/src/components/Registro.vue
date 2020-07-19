@@ -240,7 +240,6 @@
         if (index) {
           this.activo = index
         }
-        console.log(this.formData)
       },
 
       // incializa datos del objeto de creacion de elemento
@@ -276,7 +275,6 @@
         this.cargando = true  
         this.axios.post(url.url + url.urlUsuarios , this.formData)
           .then( res => { 
-            console.log(res)
             if(res.data.estado == 200){              
               this.hayMensaje = true
               this.mensaje = "Bienvenido a Nova Gaming"

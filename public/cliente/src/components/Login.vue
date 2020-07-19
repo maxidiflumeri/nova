@@ -112,7 +112,6 @@
       },
       limpiarMensaje(){
         this.error = false
-        console.log(this.formState.$invalid)
       },
 
       enviar() {

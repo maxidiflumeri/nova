@@ -273,8 +273,8 @@
           administrador: usuarioPut.ADMINISTRADOR,
           fecha_nacimiento: this.fechaNacimiento,
           sexo: usuarioPut.SEXO
-        }   
-        console.log(usuarioPut)   
+        }
+        
         this.axios.put(url.url + url.urlUsuarios + '/'+ this.usuario.ID_USUARIO, usuarioPutok, {
           headers:
             {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
