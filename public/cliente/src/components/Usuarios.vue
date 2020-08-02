@@ -311,9 +311,9 @@
 
       // metodo que trae todos los elementos
       getUsuarios() {
-        this.axios.get(url.url + url.urlUsuarios, {
+        this.axios.get(url.url + url.urlUsuarios + '/consultar', {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
           })
         .then( res => {         
           this.buscados = res.data 
@@ -371,9 +371,9 @@
       // metodo que modifica el elemento
       confirmarEdicion(usuarioPut){  
         usuarioPut.fecha_nacimiento = this.fechaNacimiento  
-        this.axios.put(url.url + url.urlUsuarios + '/'+ this.seleccionado.ID_USUARIO, usuarioPut, {
+        this.axios.put(url.url + url.urlUsuarios + '/modificar/'+ this.seleccionado.ID_USUARIO, usuarioPut, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){
@@ -401,9 +401,9 @@
 
       //Metodo que trae todos los telefonos del usuario seleccionado
       getTelefonos(){
-        this.axios.get(url.url + url.urlTelefonos + "?idUsuario=" + this.seleccionado.ID_USUARIO, {
+        this.axios.get(url.url + url.urlTelefonos + '/consultar' + "?idUsuario=" + this.seleccionado.ID_USUARIO, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
           })
         .then( res => {         
           this.telefonos = res.data
@@ -428,9 +428,9 @@
       },
 
       confirmaEdicionTelefono(telefonoPut){
-        this.axios.put(url.url + url.urlTelefonos + '/'+ telefonoPut.ID_USUARIO + '/' + telefonoPut.TELEFONO, this.telefonoTemp, {
+        this.axios.put(url.url + url.urlTelefonos + '/modificar/'+ telefonoPut.ID_USUARIO + '/' + telefonoPut.TELEFONO, this.telefonoTemp, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){
@@ -463,9 +463,9 @@
 
       //
       getDirecciones(){
-        this.axios.get(url.url + url.urlDirecciones + "?idUsuario=" + this.seleccionado.ID_USUARIO, {
+        this.axios.get(url.url + url.urlDirecciones + '/consultar' + "?idUsuario=" + this.seleccionado.ID_USUARIO, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
           })
         .then( res => {         
           this.direcciones = res.data
@@ -501,9 +501,9 @@
           this.direccionTemp.departamento = ' '
           this.direccionTemp.piso = 0
         }
-        this.axios.put(url.url + url.urlDirecciones + '/'+ direccionPut.ID_USUARIO + '/' + direccionPut.ID_DIRECCION, this.direccionTemp, {
+        this.axios.put(url.url + url.urlDirecciones + '/modificar/'+ direccionPut.ID_USUARIO + '/' + direccionPut.ID_DIRECCION, this.direccionTemp, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){

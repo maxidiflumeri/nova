@@ -125,10 +125,10 @@
             this.error = true
           }
           else{
-            localStorage.setItem('token', JSON.stringify(res.data.token))
-            localStorage.setItem('asdfghj', JSON.stringify(res.data.id_usuario))
-            if(res.data.perfil == 'S'){
-              localStorage.setItem('perfil', JSON.stringify(res.data.perfil))
+            localStorage.setItem('token', JSON.stringify(res.data.tokenReturn))
+            localStorage.setItem('asdfghj', JSON.stringify(res.data.usuario.ID_USUARIO))
+            if(res.data.usuario.ADMINISTRADOR == 'S'){
+              localStorage.setItem('perfil', JSON.stringify(res.data.usuario.ADMINISTRADOR))
             }
             this.$store.dispatch('login', {'token': localStorage.getItem('token'), 'perfil': localStorage.getItem('perfil')})
             this.$router.push({path: '/productos'})

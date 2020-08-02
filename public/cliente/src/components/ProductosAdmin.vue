@@ -517,9 +517,9 @@
             FOTO2: productoPut.FOTO2,
             FOTO3: productoPut.FOTO3
          }     
-        this.axios.put(url.url + url.urlProductos + '/'+ this.seleccionado.ID_PRODUCTO, prodNuevo, {
+        this.axios.put(url.url + url.urlProductos + '/modificar/'+ this.seleccionado.ID_PRODUCTO, prodNuevo, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){
@@ -546,9 +546,9 @@
       confirmarAgregar(){
         this.formData.ID_MARCA = this.marca
         this.formData.ID_TIPO = this.tipo
-        this.axios.post(url.url + url.urlProductos , this.formData, {
+        this.axios.post(url.url + url.urlProductos + '/agregar', this.formData, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => { 
             if(res.data.estado == 200){
@@ -570,9 +570,9 @@
 
       // metodo que elimina el elemento
       confirmarEliminar(productoDel){
-        this.axios.delete(url.url + url.urlProductos + '/'+ productoDel.ID_PRODUCTO, {
+        this.axios.delete(url.url + url.urlProductos + '/eliminar/'+ productoDel.ID_PRODUCTO, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){

@@ -252,9 +252,9 @@
 
       // metodo que modifica el elemento
       confirmarEdicion(estadoPut){        
-        this.axios.put(url.url + url.urlEstados + '/'+ this.seleccionado.ID_ESTADO, estadoPut, {
+        this.axios.put(url.url + url.urlEstados + '/modificar/'+ this.seleccionado.ID_ESTADO, estadoPut, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){
@@ -276,9 +276,9 @@
 
        // metodo que agrega el elemento
       confirmarAgregar(){        
-        this.axios.post(url.url + url.urlEstados , this.formData, {
+        this.axios.post(url.url + url.urlEstados + '/agregar',this.formData, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => { 
             if(res.data.estado == 200){
@@ -300,9 +300,9 @@
 
       // metodo que elimina el elemento
       confirmarEliminar(estadoDel){
-        this.axios.delete(url.url + url.urlEstados + '/'+ estadoDel.id_estado, {
+        this.axios.delete(url.url + url.urlEstados + '/eliminar/'+ estadoDel.id_estado, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){

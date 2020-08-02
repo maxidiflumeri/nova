@@ -14,8 +14,8 @@ export default {
   NODE_ENV: process.env.NODE_ENV || 'development',
   HOST: process.env.HOST || '127.0.0.1',
   PORT: process.env.PORT || 5000,
-  SERVER: process.env.SERVER || 'srvnova.database.windows.net',
-  DATABASE: process.env.DATABASE || 'nova-db-dev',
-  USER: process.env.USER || 'nova',
-  PASSWORD: process.env.PASSWORD || 'Nov42020'
+  SERVER: process.env.SERVER || '127.0.0.1',
+  DATABASE: process.env.DATABASE || 'nova-db',
+  USER: process.env.USER || 'sa',
+  PASSWORD: process.env.PASSWORD || '1234'
 }

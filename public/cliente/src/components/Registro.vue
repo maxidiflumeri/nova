@@ -273,7 +273,7 @@
       },
       registroDeUsuario(){      
         this.cargando = true  
-        this.axios.post(url.url + url.urlUsuarios , this.formData)
+        this.axios.post(url.url + url.urlUsuarios + '/agregar', this.formData)
           .then( res => { 
             if(res.data.estado == 200){              
               this.hayMensaje = true

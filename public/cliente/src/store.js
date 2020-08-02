@@ -35,7 +35,7 @@ export default new Vuex.Store({
         async actualizarTipos({commit}){ 
             try{
                 commit('cambiarCargandoTipos', true)          
-                const data = await axios.get(url.url + url.urlTipos) 
+                const data = await axios.get(url.url + url.urlTipos + '/consultar') 
                 commit('actualizarTipos', data.data)
                 commit('cambiarCargandoTipos', false) 
             }catch(error){
@@ -46,7 +46,7 @@ export default new Vuex.Store({
         async actualizarMarcas({commit}){ 
             try{
                 commit('cambiarCargandoMarcas', true)          
-                const data = await axios.get(url.url + url.urlMarcas)
+                const data = await axios.get(url.url + url.urlMarcas + '/consultar')
                 commit('actualizarMarcas', data.data)              
                 commit('cambiarCargandoMarcas', false) 
             }catch(error){
@@ -57,7 +57,7 @@ export default new Vuex.Store({
         async actualizarEstados({commit}){ 
             try{
                 commit('cambiarCargandoEstados', true)          
-                const data = await axios.get(url.url + url.urlEstados)
+                const data = await axios.get(url.url + url.urlEstados + '/consultar')
                 commit('actualizarEstados', data.data)
                 commit('cambiarCargandoEstados', false) 
             }catch(error){
@@ -68,7 +68,7 @@ export default new Vuex.Store({
         async actualizarProductos({commit}){ 
             try{
                 commit('cambiarCargandoProductos', true)          
-                const data = await axios.get(url.url + url.urlProductos)
+                const data = await axios.get(url.url + url.urlProductos + '/consultar')
                 commit('actualizarProductos', data.data)
                 commit('cambiarCargandoProductos', false) 
             }catch(error){

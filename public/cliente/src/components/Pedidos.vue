@@ -229,9 +229,9 @@
       async getPedidos(){ 
         try{
           this.cargandoPedidos = true
-          const data = await this.axios.get(url.url + url.urlPedidos, {            
+          const data = await this.axios.get(url.url + url.urlPedidos + '/consultar', {            
             headers:
-                {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
+                {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
             })
           this.pedidos = data.data
           this.buscados = data.data
@@ -244,9 +244,9 @@
 
       async getPedidosDetalle(){ 
         try{          
-          const data = await this.axios.get(url.url + url.urlPedidos + '?idDetalle='+this.seleccionadoTemp.id_pedido, {            
+          const data = await this.axios.get(url.url + url.urlPedidos + '/consultar' + '?idDetalle='+this.seleccionadoTemp.id_pedido, {            
             headers:
-                {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
+                {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
             })
             this.detallePedido = data.data  
         }catch(error){
@@ -302,9 +302,9 @@
           id_estado: pedidoPut.id_estado,
           productos: this.detallePedido
         }  
-        this.axios.put(url.url + url.urlPedidos + '/'+ this.seleccionado.ID_PEDIDO, pedidoPutOk, {
+        this.axios.put(url.url + url.urlPedidos + + '/modificar/'+ this.seleccionado.ID_PEDIDO, pedidoPutOk, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){

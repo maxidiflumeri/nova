@@ -285,9 +285,9 @@
 
       // metodo que modifica el elemento
       confirmarEdicion(marcaPut){        
-        this.axios.put(url.url + url.urlMarcas + '/'+ this.seleccionado.ID_MARCA, {descripcion: marcaPut.descripcion}, {
+        this.axios.put(url.url + url.urlMarcas + '/modificar/'+ this.seleccionado.ID_MARCA, {descripcion: marcaPut.descripcion}, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){
@@ -309,9 +309,9 @@
 
       // metodo que agrega el elemento
       confirmarAgregar(){        
-        this.axios.post(url.url + url.urlMarcas , this.formData, {
+        this.axios.post(url.url + url.urlMarcas + '/agregar' , this.formData, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => { 
             if(res.data.estado == 200){
@@ -333,9 +333,9 @@
 
       // metodo que elimina el elemento
       confirmarEliminar(marcaDel){
-        this.axios.delete(url.url + url.urlMarcas + '/'+ marcaDel.id_marca, {
+        this.axios.delete(url.url + url.urlMarcas + '/eliminar/'+ marcaDel.id_marca, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){

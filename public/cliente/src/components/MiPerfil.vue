@@ -238,9 +238,9 @@
       async getUsuarioPorId(){
         let id =  localStorage.getItem('asdfghj')
         try{          
-          const usuario = await this.axios.get(url.url + url.urlUsuarios + '?idUsuario=' + id, {            
+          const usuario = await this.axios.get(url.url + url.urlUsuarios + '/consultar' + '?idUsuario=' + id, {            
           headers:
-              {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
+              {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
           })
           this.usuario = usuario.data[0]
           this.fechaNacimiento = this.usuario.FECHA_NACIMIENTO
@@ -275,9 +275,9 @@
           sexo: usuarioPut.SEXO
         }
         
-        this.axios.put(url.url + url.urlUsuarios + '/'+ this.usuario.ID_USUARIO, usuarioPutok, {
+        this.axios.put(url.url + url.urlUsuarios + '/modificar/'+ this.usuario.ID_USUARIO, usuarioPutok, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){
@@ -306,9 +306,9 @@
 
       //Metodo que trae todos los telefonos del usuario seleccionado
       getTelefonos(){
-        this.axios.get(url.url + url.urlTelefonos + "?idUsuario=" + this.usuario.ID_USUARIO, {
+        this.axios.get(url.url + url.urlTelefonos + '/consultar' +"?idUsuario=" + this.usuario.ID_USUARIO, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
           })
         .then( res => {         
           this.telefonos = res.data
@@ -333,9 +333,9 @@
       },
 
       confirmaEdicionTelefono(telefonoPut){
-        this.axios.put(url.url + url.urlTelefonos + '/'+ telefonoPut.ID_USUARIO + '/' + telefonoPut.TELEFONO, this.telefonoTemp, {
+        this.axios.put(url.url + url.urlTelefonos + '/modificar/' + telefonoPut.ID_USUARIO + '/' + telefonoPut.TELEFONO, this.telefonoTemp, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){
@@ -368,9 +368,9 @@
 
       //
       getDirecciones(){
-        this.axios.get(url.url + url.urlDirecciones + "?idUsuario=" + this.usuario.ID_USUARIO, {
+        this.axios.get(url.url + url.urlDirecciones + '/consultar' + "?idUsuario=" + this.usuario.ID_USUARIO, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
           })
         .then( res => {         
           this.direcciones = res.data
@@ -406,9 +406,9 @@
           this.direccionTemp.departamento = ' '
           this.direccionTemp.piso = 0
         }
-        this.axios.put(url.url + url.urlDirecciones + '/'+ direccionPut.ID_USUARIO + '/' + direccionPut.ID_DIRECCION, this.direccionTemp, {
+        this.axios.put(url.url + url.urlDirecciones + '/modificar/' + direccionPut.ID_USUARIO + '/' + direccionPut.ID_DIRECCION, this.direccionTemp, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){

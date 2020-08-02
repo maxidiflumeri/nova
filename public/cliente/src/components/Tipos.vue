@@ -248,9 +248,9 @@
 
       // metodo que modifica el elemento
       confirmarEdicion(tipoPut){        
-        this.axios.put(url.url + url.urlTipos + '/'+ this.seleccionado.ID_TIPO, {descripcion: tipoPut.descripcion}, {
+        this.axios.put(url.url + url.urlTipos + '/modificar/'+ this.seleccionado.ID_TIPO, {descripcion: tipoPut.descripcion}, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){
@@ -272,9 +272,9 @@
 
       // metodo que agrega el elemento
       confirmarAgregar(){        
-        this.axios.post(url.url + url.urlTipos , this.formData, {
+        this.axios.post(url.url + url.urlTipos + '/agregar', this.formData, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => { 
             if(res.data.estado == 200){
@@ -295,9 +295,9 @@
 
       // metodo que elimina el elemento
       confirmarEliminar(tipoDel){
-        this.axios.delete(url.url + url.urlTipos + '/'+ tipoDel.id_tipo, {
+        this.axios.delete(url.url + url.urlTipos + '/eliminar/'+ tipoDel.id_tipo, {
           headers:
-            {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+            {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
           })
           .then( res => {  
             if(res.data.estado == 200){

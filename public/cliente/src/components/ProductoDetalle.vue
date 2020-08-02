@@ -114,7 +114,7 @@
       async getProductoPorId(){ 
         try{
           this.cargando = true
-          const data = await this.axios.get(url.url + url.urlProductos + '?id_producto=' + this.id_prod)
+          const data = await this.axios.get(url.url + url.urlProductos + '/consultar' + '?id_producto=' + this.id_prod)
           await this.$store.dispatch('actualizarMarcas')
           await this.$store.dispatch('actualizarTipos')
           this.producto = data.data[0]

@@ -166,17 +166,19 @@
       confirmarPedido(){
         if(this.$store.state.token){ //si tiene token OK
           let pedido = {
+            id_usuario: localStorage.getItem('asdfghj'),
             importe_total: this.total,
             fecha: this.obtenerFecha(), //formatea la fecha
             id_estado: "I",
             productos: this.$store.state.carrito
           }
 
-          this.axios.post(url.url + url.urlPedidos , pedido, {
+          this.axios.post(url.url + url.urlPedidos + '/agregar' , pedido, {
             headers:
-              {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
+              {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}          
             })
             .then( res => { 
+              console.log(res.data)
               if(res.data.estado == 200){
                 this.confirmaPedido = true
                 this.mensaje = this.$store.state.mensajePostOk

@@ -228,9 +228,9 @@
       async getPedidos(){ 
         try{
           this.cargandoPedidos = true
-          const data = await this.axios.get(url.url + url.urlPedidos + '?idUsuario=' + localStorage.getItem('asdfghj'), {            
+          const data = await this.axios.get(url.url + url.urlPedidos + '/consultar' + '?idUsuario=' + localStorage.getItem('asdfghj'), {            
             headers:
-                {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
+                {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
             })
           this.pedidos = data.data
           this.buscados = data.data
@@ -243,9 +243,9 @@
 
       async getPedidosDetalle(){ 
         try{          
-          const data = await this.axios.get(url.url + url.urlPedidos + '?idDetalle='+this.seleccionadoTemp.id_pedido, {            
+          const data = await this.axios.get(url.url + url.urlPedidos + '/consultar' + '?idDetalle='+this.seleccionadoTemp.id_pedido, {            
             headers:
-                {'Authorization': `Bearer ${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
+                {'token': `${this.$store.state.token.substr(1, this.$store.state.token.length-2)}`}
             })
             this.detallePedido = data.data  
         }catch(error){
