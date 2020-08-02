@@ -12,6 +12,7 @@ const main = () =>{
     app.use(cors())
     app.use(morgan('dev'))
     app.use('/api', router)
+    app.set('port', process.env.PORT || 3000)
 
     return app
 

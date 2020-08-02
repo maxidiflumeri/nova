@@ -1,11 +1,11 @@
-{
-  "type": "module",
+{  
   "name": "nova-back",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "set NODE_ENV=development&& nodemon index.js",
+    "start": "babel-node index.js --exec",
+    "dev": "set NODE_ENV=development&& nodemon index.js --exec babel-node",
     "prod": "set NODE_ENV=production&& forever start index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,9 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^15.0.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
     "connect-history-api-fallback": "^1.6.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
