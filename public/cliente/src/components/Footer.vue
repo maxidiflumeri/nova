@@ -34,39 +34,6 @@
 
       <hr class="w-100 clearfix d-md-none">
 
-     <!-- 
-      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-        <p>
-          <a href="#!">MDBootstrap</a>
-        </p>
-        <p>
-          <a href="#!">MDWordPress</a>
-        </p>
-        <p>
-          <a href="#!">BrandFlow</a>
-        </p>
-        <p>
-          <a href="#!">Bootstrap Angular</a>
-        </p>
-      </div>
-      <hr class="w-100 clearfix d-md-none">
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-        <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
-        <p>
-          <a href="#!">Your Account</a>
-        </p>
-        <p>
-          <a href="#!">Become an Affiliate</a>
-        </p>
-        <p>
-          <a href="#!">Shipping Rates</a>
-        </p>
-        <p>
-          <a href="#!">Help</a>
-        </p>
-      </div> -->
-
       <!-- Grid column -->
       <hr class="w-100 clearfix d-md-none">
 
@@ -92,9 +59,16 @@
       <!-- Grid column -->
       <div class="col-md-7 col-lg-8">
         <!--Copyright-->
-        <p class="text-center text-md-left">© 2020 Copyright:
+        <!-- <p class="text-center text-md-left">© 2020 Copyright:
           <a href="https://www.ort.edu.ar/">
             <strong>Instituto ORT</strong>
+          </a>
+        </p> -->
+
+        <!--Copyright-->
+        <p class="text-center text-md-left">Desarrollado por:
+          <a href="#">
+            <strong>NovaTeam</strong>
           </a>
         </p>
 
@@ -112,16 +86,16 @@
               </md-button>
               
             </li>
-            <li class="list-inline-item">
+            <!-- <li class="list-inline-item">
               <md-button class="md-fab md-mini bgTwit" >
                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
                   <i class="fa fa-twitter text-white"></i>
                 </a>               
               </md-button>
-            </li>
+            </li> -->
             <li class="list-inline-item">
               <md-button class="md-fab md-mini bgInsta" >
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                <a href="https://www.instagram.com/reparacionesjp/?hl=es-la" target="_blank" class="btn-floating btn-sm rgba-white-slight mx-1">
                   <i class="fa fa-instagram text-white"></i>
                 </a>              
               </md-button>
