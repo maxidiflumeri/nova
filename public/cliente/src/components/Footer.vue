@@ -21,62 +21,29 @@
 
     <!-- Footer links -->
     <div class="row text-center text-md-left mt-3 pb-3">
-
-      <!-- Grid column -->
-      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-        <h6 class="text-uppercase mb-4 font-weight-bold">Estudiantes</h6>
-        <p>Castro Santiago</p>
-        <p>Di Flumeri Maximiliano</p>
-        <p>Laboranti Ezequiel</p>
-        <p>Melendez Tomas</p>
-      </div>
-      <!-- Grid column -->
-
-      <hr class="w-100 clearfix d-md-none">
-
-      <!-- Grid column -->
-      <hr class="w-100 clearfix d-md-none">
-
-      <!-- Grid column -->
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+      
+      <!-- Contacto -->
+      <div class="col mx-auto mt-3">
         <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
+        <a href="https://goo.gl/maps/QeDrsvzqMYdeUgL1A" target="_blank">
+          <i class="fa fa-home mr-3"></i> Gral. Paz 1393, Luján, Buenos Aires, Argentina
+        </a>
+        <br>
+        <br>
+        <a href = "mailto: novagaming.it20@gmail.com">
+          <i class="fa fa-envelope mr-3"></i> novagaming.it20@gmail.com
+        </a>
+        <br>
+        <br>
         <p>
-          <i class="fa fa-home mr-3"></i> Luján, Buenos Aires, Argentina</p>
-        <p>
-          <i class="fa fa-envelope mr-3"></i> info@nova.com</p>
-        <p>
-          <i class="fa fa-phone mr-3"></i> 2323535562</p>
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Footer links -->
-
-    <hr>
-
-    <!-- Grid row -->
-    <div class="row d-flex align-items-center">
-      <!-- Grid column -->
-      <div class="col-md-7 col-lg-8">
-        <!--Copyright-->
-        <!-- <p class="text-center text-md-left">© 2020 Copyright:
-          <a href="https://www.ort.edu.ar/">
-            <strong>Instituto ORT</strong>
-          </a>
-        </p> -->
-
-        <!--Copyright-->
-        <p class="text-center text-md-left">Desarrollado por:
-          <a href="#">
-            <strong>NovaTeam</strong>
-          </a>
+          <i class="fa fa-phone mr-3"></i> +54 9 2323 625096
         </p>
-
       </div>
-      <!-- Grid column -->
-      <div class="col-md-5 col-lg-4 ml-lg-0">
+
+      <!-- Social -->
+      <div class="col ml-lg-0">
         <!-- Social buttons -->
-        <div class="text-center text-md-right">
+        <div class="text-center mt-5">
           <ul class="list-unstyled list-inline">
             <li class="list-inline-item">
               <md-button class="md-fab md-mini md-primary" >
@@ -86,13 +53,6 @@
               </md-button>
               
             </li>
-            <!-- <li class="list-inline-item">
-              <md-button class="md-fab md-mini bgTwit" >
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fa fa-twitter text-white"></i>
-                </a>               
-              </md-button>
-            </li> -->
             <li class="list-inline-item">
               <md-button class="md-fab md-mini bgInsta" >
                 <a href="https://www.instagram.com/reparacionesjp/?hl=es-la" target="_blank" class="btn-floating btn-sm rgba-white-slight mx-1">
@@ -103,6 +63,19 @@
           </ul>
         </div>
       </div>
+
+    </div>
+    <!-- Footer links -->
+
+    <hr>
+
+    <!-- Grid row -->
+    <div class="row">
+      <p class="text-center text-md-left">Desarrollado por:
+        <a href="#">
+          <strong>NovaTeam</strong>
+        </a>
+      </p>
     </div>
   </div>
 </footer>
@@ -133,6 +106,13 @@
 </script>
 
 <style scoped lang="css">
+a{
+    color: white !important;
+  }
+  a:hover{
+    text-decoration: none;
+    color: white;
+  }
   .footer {
     width: 100%;
     height: 0%;

@@ -27,27 +27,27 @@
           <div class="carousel-inner">
             <div class="carousel-item active"> 
               <div class="middle">
-                <img src="../../public/img/banner6.png" alt="First slide" >
+                <img src="../../public/img/banner1.png" alt="First slide" >
               </div>
             </div>
             <div class="carousel-item">
               <div class="middle">
-                <img src="../../public/img/banner4.png" alt="Second slide">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="middle">
-                <img src="../../public/img/banner1.jpg" alt="Third slide">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="middle">
-                <img src="../../public/img/banner2.jpg" alt="Third slide">
+                <img src="../../public/img/banner2.png" alt="Second slide">
               </div>
             </div>
             <div class="carousel-item">
               <div class="middle">
                 <img src="../../public/img/banner3.jpg" alt="Third slide">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="middle">
+                <img src="../../public/img/banner4.jpg" alt="Third slide">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="middle">
+                <img src="../../public/img/banner5.jpg" alt="Third slide">
               </div>
             </div>
           </div>
@@ -82,8 +82,10 @@
               <md-icon class="md-size-2x">map</md-icon>
             </div>
             <div class="col-lg-10">
-              <h3>Retira por nuestro local</h3>
-              <p>Ubicación</p>
+              <a href="https://goo.gl/maps/QeDrsvzqMYdeUgL1A" target="_blank">
+                <h3>Retira por nuestro local</h3>
+                <p>Ubicación</p>
+              </a>
             </div>
           </div>
         </div>
@@ -146,6 +148,13 @@
 </script>
 
 <style scoped lang="css">
+  a{
+    color: white !important;
+  }
+  a:hover{
+    text-decoration: none;
+    color: white;
+  }
   .container-fluid.mt-3{
     margin: 0px !important
   }

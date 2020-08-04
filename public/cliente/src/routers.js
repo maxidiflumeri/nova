@@ -12,6 +12,7 @@ import Pedidos from './components/Pedidos.vue'
 import Productos from './components/Productos.vue'
 import ProductosAdmin from './components/ProductosAdmin.vue'
 import Tipos from './components/Tipos.vue'
+import Banners from './components/Banners.vue'
 import Usuarios from './components/Usuarios.vue'
 import ProductoDetalle from './components/ProductoDetalle.vue'
 import Registro from './components/Registro.vue'
@@ -34,6 +35,7 @@ export const router = new VueRouter({
         {path: '/Productos', component: Productos},
         {path: '/ProductosAdmin', component: ProductosAdmin},
         {path: '/Tipos', component: Tipos},
+        {path: '/Banners', component: Banners},
         {path: '/Usuarios', component: Usuarios},
         {path: '/ProductoDetalle/:id_prod', component: ProductoDetalle, props: true},
         {path: '/Registro', component: Registro}
