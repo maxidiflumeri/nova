@@ -220,8 +220,6 @@
         formData: this.getDatosIniciales(),
         hayMensaje: false,
         mensaje: ''
-
-
       }
     },
     methods: {

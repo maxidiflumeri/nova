@@ -13,6 +13,8 @@ export default new Vuex.Store({
         cargandoTipos: false,
         listaMarcas: [],
         cargandoMarcas: false,
+        listaBanners: [],
+        cargandoBanners: false,
         listaEstados: [],
         cargandoEstados: false,
         listaProductos: [],
@@ -49,6 +51,17 @@ export default new Vuex.Store({
                 const data = await axios.get(url.url + url.urlMarcas + '/consultar')
                 commit('actualizarMarcas', data.data)              
                 commit('cambiarCargandoMarcas', false) 
+            }catch(error){
+                console.log("Error GET: " + error)
+            }
+        },
+
+        async actualizarBanners({commit}){ 
+            try{
+                commit('cambiarCargandoBanners', true)          
+                const data = await axios.get(url.url + url.urlBanners + '/consultar')
+                commit('actualizarBanners', data.data)              
+                commit('cambiarCargandoBanners', false) 
             }catch(error){
                 console.log("Error GET: " + error)
             }
@@ -135,6 +148,12 @@ export default new Vuex.Store({
         },
         cambiarCargandoMarcas(state, estado){            
             state.cargandoMarcas = estado
+        },
+        actualizarBanners(state, listaBanners){
+            state.listaBanners = listaBanners
+        },
+        cambiarCargandoBanners(state, estado){            
+            state.cargandoBanners = estado
         },
         actualizarEstados(state, listaEstados){
             state.listaEstados = listaEstados

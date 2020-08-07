@@ -50,6 +50,11 @@
               <md-menu-item>Pedidos</md-menu-item>
             </a>
           </router-link>
+          <router-link to="/Archivos">
+            <a class="text-white" href="#">
+              <md-menu-item>Subir Archivos</md-menu-item>
+            </a>
+          </router-link>
           <router-link to="/Banners">
             <a class="text-white" href="#">
               <md-menu-item>Banners</md-menu-item>
