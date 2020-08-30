@@ -2,11 +2,17 @@
 
   <form @submit.prevent="enviarArchivo" enctype="multipart/form-data">
     <div class="container mt-5 text-white">
+      <div v-if="mensaje"
+        :class="`message ${error ? 'is-danger' : 'is-success'}`"
+      >
+        <div class="nessage-body">{{mensaje}}</div>
+      </div>
       <div class="row justify-content-center">
         <label for="file" class="label m-3">Subir Imagen</label>
         <input
           class="text-white m-3"
           ref="archivo"
+          name="archivo"
           type="file"
           @change="archivoSeleccionado"
         >
@@ -30,13 +36,16 @@
     },
     data () {
       return {
-        archivo: ''
+        archivo: '',
+        mensaje: "",
+        error: false
       }
     },
     methods: {
       archivoSeleccionado(){
         this.archivo = this.$refs.archivo.files[0]
-        console.log(this.archivo)
+        this.error = false
+        this.mensaje = ""
       },
 
       async enviarArchivo(){
@@ -45,8 +54,13 @@
 
         try {
           const res = await this.axios.post(url.url + url.urlArchivos + '/agregar', formData)
-          console.log(res.data.archivo)
+          this.error = false
+          this.mensaje = ""
+          console.log("archivo: " + formData.archivo)
+          console.log(res.data)
         } catch (error) {
+          this.error = true
+          this.mensaje = "algo salio mal"
           console.log(error)
         }
       }
@@ -60,7 +74,4 @@
 </script>
 
 <style scoped lang="css">
-  .src-components-upload {
-
-  }
 </style>

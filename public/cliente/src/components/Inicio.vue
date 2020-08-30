@@ -140,7 +140,6 @@
         this.banner3 = this.banners[2].img
         this.banner4 = this.banners[3].img
         this.banner5 = this.banners[4].img
-      console.log(this.banners)
       }
     },
     computed: {

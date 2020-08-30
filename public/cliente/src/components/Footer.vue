@@ -47,7 +47,7 @@
           <ul class="list-unstyled list-inline">
             <li class="list-inline-item">
               <md-button class="md-fab md-mini md-primary" >
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://www.facebook.com/SolutionsServiceJp/" target="_blank">
                   <i class="fa fa-facebook-f text-white"></i>
                 </a>                  
               </md-button>
@@ -73,7 +73,7 @@
     <div class="row">
       <p class="text-center text-md-left">Desarrollado por:
         <a href="#">
-          <strong>NovaTeam</strong>
+          <strong>MCDSoft Soluciones</strong>
         </a>
       </p>
     </div>

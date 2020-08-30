@@ -9,7 +9,7 @@ async function obtenerTodos() {
     const conn = getConexion()
     let lista = []
     try {
-        lista = await conn.select().from(tabla)
+        lista = await conn.select().from(tabla).orderBy('DESCRIPCION', 'asc')
     }
     catch (error) {
         console.log(error)

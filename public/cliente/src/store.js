@@ -37,7 +37,7 @@ export default new Vuex.Store({
         async actualizarTipos({commit}){ 
             try{
                 commit('cambiarCargandoTipos', true)          
-                const data = await axios.get(url.url + url.urlTipos + '/consultar') 
+                const data = await axios.get(url.url + url.urlTipos + '/consultar')
                 commit('actualizarTipos', data.data)
                 commit('cambiarCargandoTipos', false) 
             }catch(error){
